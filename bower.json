@@ -1,0 +1,8 @@
+{
+  "name": "paper-radio-button",
+  "private": true,
+  "dependencies": {
+    "polymer": "Polymer/polymer#master",
+    "paper-ink": "Polymer/paper-ink#master"
+  }
+}

@@ -1,0 +1,75 @@
+<!--
+Copyright 2013 The Toolkitchen Authors. All rights reserved.
+Use of this source code is governed by a BSD-style
+license that can be found in the LICENSE file.
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-ink/paper-ink.html">
+
+<polymer-element name="paper-radio-button" attributes="checked label" 
+    on-tap="tapAction" on-pointerdown="pointerDown" on-pointerleave="pointerLeave">
+  <template>
+    <link rel="stylesheet" href="paper-radio-button.css">
+    
+    <div id="radioContainer" class="{{ {labeled: label} | tokenList }}">
+      <paper-ink id="ink" color="{{checked ? inkOnColor : inkOffColor}}" duration="{{duration}}"></paper-ink>
+      <div id="offRadio"></div>
+      <div id="onRadio" on-transitionend="{{onRadioTransitionEnd}}" on-webkittransitionend="{{onRadioTransitionEnd}}"></div>
+    </div>
+    <div id="radioLabel" hidden?="{{!label}}">{{label}}<content></content></div>
+    
+  </template>
+  <script>
+    Polymer('paper-radio-button', {
+      checked: false,
+      inkOnColor: '#c3eef7',
+      inkOffColor: '#d0d0d0',
+      duration: 0.28,
+      ready: function() {
+        this.setAttribute('touch-action', 'none');
+        this.async('checkedChanged');
+      },
+      pointerDown: function() {
+        this.$.ink.spill();
+      },
+      tapAction: function() {
+        this.waitForSpillCompleted(function() {
+          this.$.ink.evaporate();
+          this.checked = !this.checked;
+          Platform.flush();
+          this.fire('paper-radio-button-activate');
+        });
+      },
+      pointerLeave: function() {
+        this.waitForSpillCompleted('resetInk');
+      },
+      waitForSpillCompleted: function(fn) {
+        if (fn) {
+          this.async(fn, null, 
+              (this.$.ink.spillCompleted ? 0 : this.duration * 1000));
+        }
+      },
+      resetInk: function() {
+        this.$.ink.reset();
+      },
+      checkedChanged: function() {
+        if (this.checked) {
+          if (this.$.onRadio.classList.contains('fill')) {
+            this.onRadioTransitionEnd();
+          } else {
+            this.$.onRadio.classList.add('fill');
+          }
+        } else {
+          this.$.offRadio.classList.remove('hidden');
+          this.$.onRadio.classList.remove('fill');
+        }
+      },
+      onRadioTransitionEnd: function() {
+        if (this.checked) {
+          this.$.offRadio.classList.add('hidden');
+        }
+      }
+    });
+  </script>
+</polymer-element>
