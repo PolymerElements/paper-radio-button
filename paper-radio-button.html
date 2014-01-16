@@ -45,11 +45,9 @@ license that can be found in the LICENSE file.
       pointerLeave: function() {
         this.waitForSpillCompleted('resetInk');
       },
-      waitForSpillCompleted: function(fn) {
-        if (fn) {
-          this.async(fn, null, 
-              (this.$.ink.spillCompleted ? 0 : this.duration * 1000));
-        }
+      waitForSpillCompleted: function(callback) {
+        this.async(callback, null, 
+            (this.$.ink.spillCompleted ? 0 : this.duration * 1000));
       },
       resetInk: function() {
         this.$.ink.reset();
