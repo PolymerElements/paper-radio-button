@@ -39,7 +39,6 @@ license that can be found in the LICENSE file.
   height: 12px;
   border-radius: 50%;
   border: solid 2px #666;
-  z-index: 1;
 }
 
 #offRadio.hidden {
@@ -54,7 +53,6 @@ license that can be found in the LICENSE file.
   height: 16px;
   border-radius: 50%;
   background-color: #00bcd4;
-  z-index: 1;
   -webkit-transform: scale(0);
   transform: scale(0);
   -webkit-transition: -webkit-transform ease 0.28s;
@@ -71,7 +69,6 @@ license that can be found in the LICENSE file.
   display: inline-block;
   vertical-align: middle;
   padding-left: 8px;
-  z-index: 1;
 }
 
 #radioLabel[hidden] {
