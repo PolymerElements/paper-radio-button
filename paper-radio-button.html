@@ -4,11 +4,9 @@ Use of this source code is governed by a BSD-style
 license that can be found in the LICENSE file.
 -->
 
-<link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../paper-ink/paper-ink.html">
 
-<polymer-element name="paper-radio-button" attributes="checked label toggleable" 
-    on-tap="tap" on-pointerdown="pointerDown" on-pointerleave="pointerLeave">
+<polymer-element name="paper-radio-button" attributes="checked label toggles">
   <template>
     <link rel="stylesheet" href="paper-radio-button.css">
     
@@ -23,12 +21,16 @@ license that can be found in the LICENSE file.
   <script>
     Polymer('paper-radio-button', {
       checked: false,
-      toggleable: false,
+      toggles: false,
       inkOnColor: '#d2eff5',
       inkOffColor: '#d0d0d0',
-      duration: 0.28,
+      duration: 140,
+      eventDelegates: {
+        tap: 'tap',
+        pointerdown: 'pointerDown',
+        pointerleave: 'pointerLeave'
+      },
       ready: function() {
-        this.setAttribute('touch-action', 'none');
         this.async('checkedChanged');
       },
       pointerDown: function() {
@@ -47,13 +49,13 @@ license that can be found in the LICENSE file.
       },
       waitForSpillCompleted: function(callback) {
         this.async(callback, null, 
-            (this.$.ink.spillCompleted ? 0 : this.duration * 1000));
+          (this.$.ink.spillCompleted ? 0 : this.duration));
       },
       resetInk: function() {
         this.$.ink.reset();
       },
       toggle: function() {
-        this.checked = !this.toggleable || !this.checked;
+        this.checked = !this.toggles || !this.checked;
       },
       checkedChanged: function() {
         if (this.checked) {
