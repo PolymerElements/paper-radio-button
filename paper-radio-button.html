@@ -22,7 +22,7 @@ license that can be found in the LICENSE file.
 
 <link rel="import" href="../paper-ink/paper-ink.html">
 
-<polymer-element name="paper-radio-button" attributes="checked label toggles">
+<polymer-element name="paper-radio-button" attributes="checked label toggles" role="radio" tabindex="0" aria-checked="false">
   <template>
     <link rel="stylesheet" href="paper-radio-button.css">
     
@@ -31,7 +31,7 @@ license that can be found in the LICENSE file.
       <div id="offRadio"></div>
       <div id="onRadio" on-transitionend="{{onRadioTransitionEnd}}" on-webkittransitionend="{{onRadioTransitionEnd}}"></div>
     </div>
-    <div id="radioLabel" hidden?="{{!label}}">{{label}}<content></content></div>
+    <div id="radioLabel" aria-hidden="true" hidden?="{{!label}}">{{label}}<content></content></div>
     
   </template>
   <script>
@@ -77,11 +77,15 @@ license that can be found in the LICENSE file.
           this.$.offRadio.classList.remove('hidden');
           this.$.onRadio.classList.remove('fill');
         }
+        this.setAttribute('aria-checked', this.checked ? 'true': 'false');
       },
       onRadioTransitionEnd: function() {
         if (this.checked) {
           this.$.offRadio.classList.add('hidden');
         }
+      },
+      labelChanged: function() {
+       this.setAttribute('aria-label', this.label);
       }
     });
   </script>
