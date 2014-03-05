@@ -6,49 +6,91 @@ license that can be found in the LICENSE file.
 
 <!--
 /**
- * @module Quantum Paper Elements
- */
-/**
- * paper-radio-button
+ * @group Quantum Paper Elements
+ *
+ * `paper-radio-button` is a button that can be either checked or unchecked.
+ * User can tap the radio button to check it.  But it cannot be unchecked by
+ * tapping once checked.
+ *
+ * Use `paper-radio-group` to group a set of radio buttons.  When radio buttons
+ * are inside a radio group, only one radio button in the group can be checked.
  *
  * Example:
  *
  *    <paper-radio-button></paper-radio-button>
  *
- * @class paper-radio-button
- * @author The Polymer Authors
+ * @element paper-radio-button
+ * @homepage github.io
  */
 -->
 
 <link rel="import" href="../paper-ink/paper-ink.html">
 
 <polymer-element name="paper-radio-button" attributes="checked label toggles" role="radio" tabindex="0" aria-checked="false">
+
   <template>
+  
     <link rel="stylesheet" href="paper-radio-button.css">
     
     <div id="radioContainer" class="{{ {labeled: label} | tokenList }}">
+    
       <paper-ink id="ink" color="{{checked ? inkOnColor : inkOffColor}}" duration="{{duration}}"></paper-ink>
+      
       <div id="offRadio"></div>
       <div id="onRadio" on-transitionend="{{onRadioTransitionEnd}}" on-webkittransitionend="{{onRadioTransitionEnd}}"></div>
+      
     </div>
+    
     <div id="radioLabel" aria-hidden="true" hidden?="{{!label}}">{{label}}<content></content></div>
     
   </template>
+  
   <script>
+  
     Polymer('paper-radio-button', {
+      
+      /**
+       * Gets or sets the state, `true` is checked and `false` is unchecked.
+       *
+       * @attribute checked
+       * @type boolean
+       * @default false
+       */
       checked: false,
+      
+      /**
+       * The label for the radio button.
+       *
+       * @attribute label
+       * @type string
+       * @default ''
+       */
+       
+      /**
+       * Normally the user cannot uncheck the radio button by tapping once
+       * checked.  Setting this property to `true` makes the radio button
+       * toggleable from checked to unchecked.
+       *
+       * @attribute toggles
+       * @type boolean
+       * @default false
+       */
       toggles: false,
+      
       inkOnColor: '#d2eff5',
       inkOffColor: '#d0d0d0',
       duration: 280,
+      
       eventDelegates: {
         tap: 'tap',
         pointerdown: 'pointerDown',
         pointerleave: 'pointerLeave'
       },
+      
       pointerDown: function() {
         this.$.ink.spill();
       },
+      
       tap: function() {
         this.waitForSpillCompleted(function() {
           this.$.ink.evaporate();
@@ -57,19 +99,24 @@ license that can be found in the LICENSE file.
           this.fire('paper-radio-button-activate');
         });
       },
+      
       pointerLeave: function() {
         this.waitForSpillCompleted('resetInk');
       },
+      
       waitForSpillCompleted: function(callback) {
         this.async(callback, null, 
           (this.$.ink.spillCompleted ? 0 : this.duration));
       },
+      
       resetInk: function() {
         this.$.ink.reset();
       },
+      
       toggle: function() {
         this.checked = !this.toggles || !this.checked;
       },
+      
       checkedChanged: function() {
         if (this.checked) {
           this.$.onRadio.classList.add('fill');
@@ -79,14 +126,19 @@ license that can be found in the LICENSE file.
         }
         this.setAttribute('aria-checked', this.checked ? 'true': 'false');
       },
+      
       onRadioTransitionEnd: function() {
         if (this.checked) {
           this.$.offRadio.classList.add('hidden');
         }
       },
+      
       labelChanged: function() {
-       this.setAttribute('aria-label', this.label);
+        this.setAttribute('aria-label', this.label);
       }
+      
     });
+    
   </script>
+  
 </polymer-element>
