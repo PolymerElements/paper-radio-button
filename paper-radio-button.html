@@ -83,11 +83,11 @@ license that can be found in the LICENSE file.
       
       eventDelegates: {
         tap: 'tap',
-        pointerdown: 'pointerDown',
-        pointerleave: 'pointerLeave'
+        pointerdown: 'spillInk',
+        pointerleave: 'resetInkAfterSpillCompleted'
       },
       
-      pointerDown: function() {
+      spillInk: function() {
         this.$.ink.spill();
       },
       
@@ -95,13 +95,8 @@ license that can be found in the LICENSE file.
         this.waitForSpillCompleted(function() {
           this.$.ink.evaporate();
           this.toggle();
-          Platform.flush();
           this.fire('paper-radio-button-activate');
         });
-      },
-      
-      pointerLeave: function() {
-        this.waitForSpillCompleted('resetInk');
       },
       
       waitForSpillCompleted: function(callback) {
@@ -111,6 +106,10 @@ license that can be found in the LICENSE file.
       
       resetInk: function() {
         this.$.ink.reset();
+      },
+      
+      resetInkAfterSpillCompleted: function() {
+        this.waitForSpillCompleted('resetInk');
       },
       
       toggle: function() {
