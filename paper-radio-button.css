@@ -9,7 +9,7 @@ license that can be found in the LICENSE file.
   cursor: pointer;
 }
 
-:host:focus {
+:host(:focus) {
   outline: none;
 }
 
