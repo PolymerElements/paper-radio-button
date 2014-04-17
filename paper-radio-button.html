@@ -86,8 +86,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       
       eventDelegates: {
         tap: 'tap',
-        pointerdown: 'spillInk',
-        pointerleave: 'resetInkAfterSpillCompleted'
+        down: 'spillInk',
+        up: 'resetInkAfterSpillCompleted'
       },
       
       spillInk: function() {
@@ -111,8 +111,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this.$.ink.reset();
       },
       
-      resetInkAfterSpillCompleted: function() {
-        this.waitForSpillCompleted('resetInk');
+      resetInkAfterSpillCompleted: function(e) {
+        var inside = PolymerGestures.insideNode(this, e.clientX, e.clientY);
+        if (!inside) {
+          this.waitForSpillCompleted('resetInk');
+        }
       },
       
       toggle: function() {
