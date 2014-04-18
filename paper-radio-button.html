@@ -29,7 +29,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../paper-ink/paper-ink.html">
 
-<polymer-element name="paper-radio-button" attributes="checked label toggles" role="radio" tabindex="0" aria-checked="false">
+<polymer-element name="paper-radio-button" role="radio" tabindex="0" aria-checked="false">
 
   <template>
   
@@ -52,33 +52,36 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   
     Polymer('paper-radio-button', {
       
-      /**
-       * Gets or sets the state, `true` is checked and `false` is unchecked.
-       *
-       * @attribute checked
-       * @type boolean
-       * @default false
-       */
-      checked: false,
-      
-      /**
-       * The label for the radio button.
-       *
-       * @attribute label
-       * @type string
-       * @default ''
-       */
-       
-      /**
-       * Normally the user cannot uncheck the radio button by tapping once
-       * checked.  Setting this property to `true` makes the radio button
-       * toggleable from checked to unchecked.
-       *
-       * @attribute toggles
-       * @type boolean
-       * @default false
-       */
-      toggles: false,
+      publish: {
+        /**
+         * Gets or sets the state, `true` is checked and `false` is unchecked.
+         *
+         * @attribute checked
+         * @type boolean
+         * @default false
+         */
+        checked: {valUE: false, reflect: true},
+        
+        /**
+         * The label for the radio button.
+         *
+         * @attribute label
+         * @type string
+         * @default ''
+         */
+        label: '',
+        
+        /**
+         * Normally the user cannot uncheck the radio button by tapping once
+         * checked.  Setting this property to `true` makes the radio button
+         * toggleable from checked to unchecked.
+         *
+         * @attribute toggles
+         * @type boolean
+         * @default false
+         */
+        toggles: false
+      },
       
       inkOnColor: '#d2eff5',
       inkOffColor: '#d0d0d0',
