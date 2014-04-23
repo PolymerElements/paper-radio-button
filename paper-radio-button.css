@@ -57,7 +57,7 @@ license that can be found in the LICENSE file.
   background-color: #00bcd4;
   -webkit-transform: scale(0);
   transform: scale(0);
-  -webkit-transition: -webkit-transform ease 0.28s;
+  transition: -webkit-transform ease 0.28s;
   transition: transform ease 0.28s;
 }
 

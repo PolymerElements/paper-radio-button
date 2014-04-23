@@ -40,7 +40,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <paper-ink id="ink" color="{{checked ? inkOnColor : inkOffColor}}" duration="{{duration}}"></paper-ink>
       
       <div id="offRadio"></div>
-      <div id="onRadio" on-transitionend="{{onRadioTransitionEnd}}" on-webkittransitionend="{{onRadioTransitionEnd}}"></div>
+      <div id="onRadio" on-transitionend="{{onRadioTransitionEnd}}"></div>
       
     </div>
     
@@ -99,7 +99,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       
       tap: function() {
         this.waitForSpillCompleted(function() {
-          this.$.ink.evaporate();
+          if (this.$.ink.spillCompleted) {
+            this.$.ink.evaporate();
+          }
           this.toggle();
           this.fire('paper-radio-button-activate');
         });
@@ -136,7 +138,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       },
       
       onRadioTransitionEnd: function() {
-        if (this.checked) {
+        if (this.checked && this.$.ink.spillCompleted) {
           this.$.offRadio.classList.add('hidden');
         }
       },
