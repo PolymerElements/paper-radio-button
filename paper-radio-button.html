@@ -99,9 +99,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       
       tap: function() {
         this.waitForSpillCompleted(function() {
-          if (this.$.ink.spillCompleted) {
-            this.$.ink.evaporate();
-          }
+          this.$.ink.evaporate();
           this.toggle();
           this.fire('paper-radio-button-activate');
         });
