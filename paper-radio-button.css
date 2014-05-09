@@ -1,12 +1,14 @@
 /*
-Copyright 2013 The Polymer Authors. All rights reserved.
-Use of this source code is governed by a BSD-style
-license that can be found in the LICENSE file.
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
 
 :host {
   display: inline-block;
-  cursor: pointer;
 }
 
 :host(:focus) {
@@ -17,6 +19,7 @@ license that can be found in the LICENSE file.
   position: relative;
   width: 16px;
   height: 16px;
+  cursor: pointer;
 }
 
 #radioContainer.labeled {
@@ -30,7 +33,11 @@ license that can be found in the LICENSE file.
   left: -17px;
   width: 50px;
   height: 50px;
-  pointer-events: none;
+  color: #5a5a5a;
+}
+
+:host([checked]) #ink {
+  color: #0f9d58;
 }
 
 #offRadio {
@@ -40,11 +47,8 @@ license that can be found in the LICENSE file.
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  border: solid 2px #666;
-}
-
-#offRadio.hidden {
-  display: none;
+  border: solid 2px;
+  border-color: #5a5a5a;
 }
 
 #onRadio {
@@ -54,7 +58,7 @@ license that can be found in the LICENSE file.
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background-color: #00bcd4;
+  background-color: #0f9d58;
   -webkit-transform: scale(0);
   transform: scale(0);
   transition: -webkit-transform ease 0.28s;
@@ -62,15 +66,15 @@ license that can be found in the LICENSE file.
 }
 
 #onRadio.fill {
-  -webkit-transform: scale(1);
-  transform: scale(1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 #radioLabel {
   position: relative;
   display: inline-block;
   vertical-align: middle;
-  padding-left: 8px;
+  margin-left: 10px;
 }
 
 #radioLabel[hidden] {

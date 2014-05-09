@@ -1,33 +1,56 @@
 <!--
 Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE
-The complete set of authors may be found at http://polymer.github.io/AUTHORS
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
 Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 
 <!--
-/**
- * @group Quantum Paper Elements
- *
- * `paper-radio-button` is a button that can be either checked or unchecked.
- * User can tap the radio button to check it.  But it cannot be unchecked by
- * tapping once checked.
- *
- * Use `paper-radio-group` to group a set of radio buttons.  When radio buttons
- * are inside a radio group, only one radio button in the group can be checked.
- *
- * Example:
- *
- *     <paper-radio-button></paper-radio-button>
- *
- * @element paper-radio-button
- * @homepage github.io
- */
+`paper-radio-button` is a button that can be either checked or unchecked.
+User can tap the radio button to check it.  But it cannot be unchecked by
+tapping once checked.
+
+Use `paper-radio-group` to group a set of radio buttons.  When radio buttons
+are inside a radio group, only one radio button in the group can be checked.
+
+Example:
+
+    <paper-radio-button></paper-radio-button>
+    
+Styling radio button:
+
+To change the ink color for checked state:
+
+    paper-radio-button[checked]::shadow #ink {
+      color: #4285f4;
+    }
+    
+To change the radio checked color:
+    
+    paper-radio-button::shadow #onRadio {
+      background-color: #4285f4;
+    }
+    
+To change the ink color for unchecked state:
+
+    paper-radio-button::shadow #ink {
+      color: #b5b5b5;
+    }
+    
+To change the radio unchecked color:
+    
+    paper-radio-button::shadow #offRadio {
+      border-color: #b5b5b5;
+    }
+
+@group Quantum Paper Elements
+@element paper-radio-button
+@homepage github.io
 -->
 
-<link rel="import" href="../paper-ink/paper-ink.html">
+<link rel="import" href="../paper-ripple/paper-ripple.html">
 
 <polymer-element name="paper-radio-button" role="radio" tabindex="0" aria-checked="false">
 
@@ -37,10 +60,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     
     <div id="radioContainer" class="{{ {labeled: label} | tokenList }}">
     
-      <paper-ink id="ink" color="{{checked ? inkOnColor : inkOffColor}}" duration="{{duration}}"></paper-ink>
-      
       <div id="offRadio"></div>
-      <div id="onRadio" on-transitionend="{{onRadioTransitionEnd}}"></div>
+      <div id="onRadio"></div>
+      
+      <paper-ripple id="ink" class="circle recenteringTouch"></paper-ripple>
       
     </div>
     
@@ -83,42 +106,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         toggles: false
       },
       
-      inkOnColor: '#d2eff5',
-      inkOffColor: '#d0d0d0',
-      duration: 280,
-      
       eventDelegates: {
-        tap: 'tap',
-        down: 'spillInk',
-        up: 'resetInkAfterSpillCompleted'
-      },
-      
-      spillInk: function() {
-        this.$.ink.spill();
+        tap: 'tap'
       },
       
       tap: function() {
-        this.waitForSpillCompleted(function() {
-          this.$.ink.evaporate();
-          this.toggle();
-          this.fire('paper-radio-button-activate');
-        });
-      },
-      
-      waitForSpillCompleted: function(callback) {
-        this.async(callback, null, 
-          (this.$.ink.spillCompleted ? 0 : this.duration));
-      },
-      
-      resetInk: function() {
-        this.$.ink.reset();
-      },
-      
-      resetInkAfterSpillCompleted: function(e) {
-        var inside = PolymerGestures.insideNode(this, e.clientX, e.clientY);
-        if (!inside) {
-          this.waitForSpillCompleted('resetInk');
-        }
+        this.toggle();
+        this.fire('paper-radio-button-activate');
       },
       
       toggle: function() {
@@ -126,19 +120,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       },
       
       checkedChanged: function() {
-        if (this.checked) {
-          this.$.onRadio.classList.add('fill');
-        } else {
-          this.$.offRadio.classList.remove('hidden');
-          this.$.onRadio.classList.remove('fill');
-        }
+        this.$.onRadio.classList.toggle('fill', this.checked);
         this.setAttribute('aria-checked', this.checked ? 'true': 'false');
-      },
-      
-      onRadioTransitionEnd: function() {
-        if (this.checked && this.$.ink.spillCompleted) {
-          this.$.offRadio.classList.add('hidden');
-        }
       },
       
       labelChanged: function() {
