@@ -53,83 +53,87 @@ To change the radio unchecked color:
 <link rel="import" href="../paper-ripple/paper-ripple.html">
 
 <polymer-element name="paper-radio-button" role="radio" tabindex="0" aria-checked="false">
+<template>
 
-  <template>
+  <link rel="stylesheet" href="paper-radio-button.css">
   
-    <link rel="stylesheet" href="paper-radio-button.css">
-    
-    <div id="radioContainer" class="{{ {labeled: label} | tokenList }}">
-    
-      <div id="offRadio"></div>
-      <div id="onRadio"></div>
-      
-      <paper-ripple id="ink" class="circle recenteringTouch"></paper-ripple>
-      
-    </div>
-    
-    <div id="radioLabel" aria-hidden="true" hidden?="{{!label}}">{{label}}<content></content></div>
-    
-  </template>
+  <div id="radioContainer" class="{{ {labeled: label} | tokenList }}">
   
-  <script>
-  
-    Polymer('paper-radio-button', {
-      
-      publish: {
-        /**
-         * Gets or sets the state, `true` is checked and `false` is unchecked.
-         *
-         * @attribute checked
-         * @type boolean
-         * @default false
-         */
-        checked: {value: false, reflect: true},
-        
-        /**
-         * The label for the radio button.
-         *
-         * @attribute label
-         * @type string
-         * @default ''
-         */
-        label: '',
-        
-        /**
-         * Normally the user cannot uncheck the radio button by tapping once
-         * checked.  Setting this property to `true` makes the radio button
-         * toggleable from checked to unchecked.
-         *
-         * @attribute toggles
-         * @type boolean
-         * @default false
-         */
-        toggles: false
-      },
-      
-      eventDelegates: {
-        tap: 'tap'
-      },
-      
-      tap: function() {
-        this.toggle();
-        this.fire('paper-radio-button-activate');
-      },
-      
-      toggle: function() {
-        this.checked = !this.toggles || !this.checked;
-      },
-      
-      checkedChanged: function() {
-        this.$.onRadio.classList.toggle('fill', this.checked);
-        this.setAttribute('aria-checked', this.checked ? 'true': 'false');
-      },
-      
-      labelChanged: function() {
-        this.setAttribute('aria-label', this.label);
-      }
-      
-    });
+    <div id="offRadio"></div>
+    <div id="onRadio"></div>
     
-  </script>
+    <paper-ripple id="ink" class="circle recenteringTouch"></paper-ripple>
+    
+  </div>
   
+  <div id="radioLabel" aria-hidden="true" hidden?="{{!label}}">{{label}}<content></content></div>
+  
+</template>
+<script>
+
+  Polymer('paper-radio-button', {
+    
+    /**
+     * Fired when the checked state changes.
+     *
+     * @event change
+     */
+    
+    publish: {
+      /**
+       * Gets or sets the state, `true` is checked and `false` is unchecked.
+       *
+       * @attribute checked
+       * @type boolean
+       * @default false
+       */
+      checked: {value: false, reflect: true},
+      
+      /**
+       * The label for the radio button.
+       *
+       * @attribute label
+       * @type string
+       * @default ''
+       */
+      label: '',
+      
+      /**
+       * Normally the user cannot uncheck the radio button by tapping once
+       * checked.  Setting this property to `true` makes the radio button
+       * toggleable from checked to unchecked.
+       *
+       * @attribute toggles
+       * @type boolean
+       * @default false
+       */
+      toggles: false
+    },
+    
+    eventDelegates: {
+      tap: 'tap'
+    },
+    
+    tap: function() {
+      this.toggle();
+      this.fire('paper-radio-button-activate');
+    },
+    
+    toggle: function() {
+      this.checked = !this.toggles || !this.checked;
+    },
+    
+    checkedChanged: function() {
+      this.$.onRadio.classList.toggle('fill', this.checked);
+      this.setAttribute('aria-checked', this.checked ? 'true': 'false');
+      this.fire('change');
+    },
+    
+    labelChanged: function() {
+      this.setAttribute('aria-label', this.label);
+    }
+    
+  });
+  
+</script>
 </polymer-element>
