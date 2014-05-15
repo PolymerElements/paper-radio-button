@@ -23,7 +23,7 @@ Styling radio button:
 
 To change the ink color for checked state:
 
-    paper-radio-button[checked]::shadow #ink {
+    paper-radio-button::shadow #ink[checked] {
       color: #4285f4;
     }
     
@@ -62,7 +62,7 @@ To change the radio unchecked color:
     <div id="offRadio"></div>
     <div id="onRadio"></div>
     
-    <paper-ripple id="ink" class="circle recenteringTouch"></paper-ripple>
+    <paper-ripple id="ink" class="circle recenteringTouch" checked?="{{!checked}}"></paper-ripple>
     
   </div>
   
