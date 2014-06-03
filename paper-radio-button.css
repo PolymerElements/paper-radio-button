@@ -9,6 +9,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 :host {
   display: inline-block;
+  white-space: nowrap;
 }
 
 :host(:focus) {
@@ -75,6 +76,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   display: inline-block;
   vertical-align: middle;
   margin-left: 10px;
+  white-space: normal;
+  pointer-events: none;
 }
 
 #radioLabel[hidden] {
