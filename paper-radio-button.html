@@ -56,6 +56,8 @@ To change the radio unchecked color:
 <template>
 
   <link rel="stylesheet" href="paper-radio-button.css">
+
+  <core-a11y-keys target="{{}}" keys="space" on-keys-pressed="{{tap}}"></core-a11y-keys>
   
   <div id="radioContainer" class="{{ {labeled: label} | tokenList }}">
   
