@@ -6,7 +6,6 @@
     "paper-ripple": "Polymer/paper-ripple#master"
   },
   "ignore": [
-    "paper-radio-button.externs.js",
-    "eventtype.js"
+    "externs/**"
   ]
 }
