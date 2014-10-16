@@ -4,5 +4,9 @@
   "dependencies": {
     "core-a11y-keys": "Polymer/core-a11y-keys#master",
     "paper-ripple": "Polymer/paper-ripple#master"
-  }
+  },
+  "ignore": [
+    "paper-radio-button.externs.js",
+    "eventtype.js"
+  ]
 }
