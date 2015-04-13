@@ -1,0 +1,16 @@
+{
+  "name": "paper-radio-button",
+  "version": "0.0.1",
+  "homepage": "https://github.com/Polymer/paper-radio-button",
+  "authors": [
+    "The Polymer Authors"
+  ],
+  "devDependencies": {
+    "webcomponentsjs": "webcomponents/webcomponentsjs#master",
+    "web-component-tester": "Polymer/web-component-tester#^2.2.3",
+    "test-fixture": "polymer/test-fixture#master"
+  },
+  "dependencies": {
+    "polymer": "polymer/polymer#0.8-preview"
+  }
+}
