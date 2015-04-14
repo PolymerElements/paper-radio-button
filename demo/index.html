@@ -16,18 +16,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <meta name="apple-mobile-web-app-capable" content="yes">
 
   <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-  <link href="../../font-roboto/roboto.html" rel="import">
-  <link href="../../layout/layout.html" rel="import">
-  <link href="../paper-radio-button.html" rel="import">
+  <link rel="import" href="../../font-roboto/roboto.html">
+  <link rel="import" href="../../layout/layout.html">
+  <link rel="import" href="../paper-radio-button.html">
+
+  <link rel="stylesheet" href="../../paper-styles/demo.css">
 
   <style is="x-style">
-    body {
-      font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
-      margin: 0;
-      -webkit-tap-highlight-color: rgba(0,0,0,0);
-      -webkit-touch-callout: none;
-    }
-
     paper-radio-button.blue {
       --paper-radio-button-unchecked-color: red;
       --paper-radio-button-unchecked-ink-color: red;
@@ -41,7 +36,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       font-size: 20px;
     }
 
-    section, paper-radio-button {
+    paper-radio-button {
       padding: 20px;
     }
   </style>
@@ -56,22 +51,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <section>
     <div class="label">Radio button (toggles)</div>
-    <paper-radio-button toggles></paper-radio-button>
+    <paper-radio-button is-toggle></paper-radio-button>
   </section>
 
   <section>
     <div class="label">Radio button (disabled)</div>
-    <paper-radio-button disabled toggles></paper-radio-button>
+    <paper-radio-button disabled></paper-radio-button>
   </section>
 
   <section>
     <div class="label">Radio button (checked, disabled)</div>
-    <paper-radio-button checked disabled toggles></paper-radio-button>
+    <paper-radio-button checked disabled is-toggle></paper-radio-button>
   </section>
 
   <section>
     <div class="label">Radio button (toggles, red to blue)</div>
-    <paper-radio-button class="blue" toggles></paper-radio-button>
+    <paper-radio-button class="blue" is-toggle></paper-radio-button>
   </section>
 </body>
 </html>

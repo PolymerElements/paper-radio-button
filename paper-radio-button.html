@@ -39,26 +39,27 @@ Styling a radio button:
 
 <link href="../polymer/polymer.html" rel="import">
 <link rel="import" href="../paper-ripple/paper-ripple.html">
+<link rel="import" href="../paper-styles/x-theme.html">
 
 <dom-module id="paper-radio-button">
   <style is="x-style">
     * {
-      --paper-radio-button-unchecked-color: #5a5a5a;
-      --paper-radio-button-unchecked-ink-color: #5a5a5a;
+      --paper-radio-button-unchecked-color: var(--primary-text-color);
+      --paper-radio-button-unchecked-ink-color: var(--primary-text-color);
 
-      --paper-radio-button-checked-color: #009688;
-      --paper-radio-button-checked-ink-color: #0f9d58;
+      --paper-radio-button-checked-color: var(--default-primary-color);
+      --paper-radio-button-checked-ink-color: var(--default-primary-color);
     }
   </style>
 
   <link rel="import" type="css" href="paper-radio-button.css">
 
-  <template >
+  <template>
 
     <div id="radioContainer">
       <div id="offRadio"></div>
       <div id="onRadio"></div>
-      <paper-ripple id="ink" class="circle" recenters checked$="{{checked}}"></paper-ripple>
+      <paper-ripple id="ink" class="circle" recenters checked$="[[checked]]"></paper-ripple>
     </div>
 
     <div id="radioLabel" aria-hidden="true"><content></content></div>
@@ -107,20 +108,6 @@ Styling a radio button:
       },
 
       /**
-       * Normally the user cannot uncheck the radio button by tapping once
-       * checked.  Setting this property to `true` makes the radio button
-       * toggleable from checked to unchecked.
-       *
-       * @attribute toggles
-       * @type boolean
-       * @default false
-       */
-      toggles: {
-        type: Boolean,
-        value: false
-      },
-
-      /**
        * If true, the user cannot interact with this element.
        *
        * @attribute disabled
@@ -129,29 +116,55 @@ Styling a radio button:
        */
       disabled: {
         type: Boolean
+      },
+
+      /**
+       * Normally the user cannot uncheck the radio button by tapping once
+       * checked.  Setting this property to `true` makes the radio button
+       * toggleable from checked to unchecked.
+       *
+       * @attribute isToggle
+       * @type boolean
+       * @default false
+       */
+      isToggle: {
+        type: Boolean,
+        value: false
       }
     },
 
     listeners: {
-      mousedown: 'onDown'
+      keydown: 'keyDown',
+      mousedown: 'mouseDown'
     },
 
     ready: function() {
-      if (this.$.radioLabel.innerText == "")
+      if (this.$.radioLabel.innerText == '') {
         this.$.radioLabel.hidden = true;
-      else
+      } else {
         this.setAttribute('aria-label', this.$.radioLabel.textContent);
+      }
     },
 
-    onDown: function() {
-      if (this.disabled)
+    keyDown: function(e) {
+      // Enter key.
+      if (e.keyCode === 13) {
+        this.mouseDown();
+        e.preventDefault();
+      }
+    },
+
+    mouseDown: function() {
+      if (this.disabled) {
         return;
+      }
 
       var old = this.checked;
-      this.checked = !this.toggles || !this.checked;
+      this.checked = !this.isToggle || !this.checked;
 
-      if (this.checked !== old)
+      if (this.checked !== old) {
         this.fire('change');
+      }
     },
 
     checkedChanged: function() {

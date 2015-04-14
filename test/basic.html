@@ -74,7 +74,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         });
         MockInteractions.down(r1);
       });
+    });
 
+    suite('a11y', function() {
+      var r1;
+      var r2;
+
+      setup(function() {
+        r1 = fixture('NoLabel');
+        r2 = fixture('WithLabel');
+      });
+      
       test('has aria role "radio"', function() {
         assert.isTrue(r1.getAttribute('role') == 'radio');
         assert.isTrue(r2.getAttribute('role') == 'radio');
