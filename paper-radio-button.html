@@ -41,6 +41,7 @@ Styling a radio button:
 <link rel="import" href="../paper-ripple/paper-ripple.html">
 <link rel="import" href="../paper-styles/x-theme.html">
 
+/* TODO: This needs to use core-focusable when it's ready. */
 <dom-module id="paper-radio-button">
   <style is="x-style">
     * {
@@ -55,7 +56,7 @@ Styling a radio button:
   <link rel="import" type="css" href="paper-radio-button.css">
 
   <template>
-
+    
     <div id="radioContainer">
       <div id="offRadio"></div>
       <div id="onRadio"></div>
@@ -134,8 +135,8 @@ Styling a radio button:
     },
 
     listeners: {
-      keydown: 'keyDown',
-      mousedown: 'mouseDown'
+      keydown: 'onKeyDown',
+      mousedown: 'onMouseDown'
     },
 
     ready: function() {
@@ -146,15 +147,15 @@ Styling a radio button:
       }
     },
 
-    keyDown: function(e) {
+    onKeyDown: function(event) {
       // Enter key.
-      if (e.keyCode === 13) {
-        this.mouseDown();
-        e.preventDefault();
+      if (event.keyCode === 13) {
+        this.onMouseDown();
+        event.preventDefault();
       }
     },
 
-    mouseDown: function() {
+    onMouseDown: function() {
       if (this.disabled) {
         return;
       }
