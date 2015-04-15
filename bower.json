@@ -29,6 +29,7 @@
     "webcomponentsjs": "webcomponents/webcomponentsjs#~0.6.1",
     "web-component-tester": "Polymer/web-component-tester#^2.2.3",
     "iron-doc-viewer": "PolymerElements/iron-doc-viewer#master",
-    "test-fixture": "polymer/test-fixture#master"
+    "test-fixture": "polymer/test-fixture#master",
+    "core-focusable": "polymer/core-focusable#0.8-preview"
   }
 }

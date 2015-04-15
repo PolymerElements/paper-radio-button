@@ -39,11 +39,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script>
     suite('defaults', function() {
       var r1;
-      var r2;
 
       setup(function() {
         r1 = fixture('NoLabel');
-        r2 = fixture('WithLabel');
       });
 
       test('check button via click', function() {
@@ -84,7 +82,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         r1 = fixture('NoLabel');
         r2 = fixture('WithLabel');
       });
-      
+
       test('has aria role "radio"', function() {
         assert.isTrue(r1.getAttribute('role') == 'radio');
         assert.isTrue(r2.getAttribute('role') == 'radio');
