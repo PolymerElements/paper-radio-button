@@ -20,10 +20,9 @@
   "ignore": [
   ],
   "dependencies": {
-    "polymer": "polymer/polymer#0.8-preview",
-    "layout": "Polymer/layout#master",
+    "polymer": "polymer/polymer#v0.8.0-rc.4",
     "paper-ripple": "Polymer/paper-ripple#0.8-preview",
-    "paper-styles": "PolymerLabs/paper-styles#master"
+    "paper-styles": "PolymerElements/paper-styles#master"
   },
   "devDependencies": {
     "webcomponentsjs": "webcomponents/webcomponentsjs#~0.6.1",
