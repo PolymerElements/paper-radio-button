@@ -37,7 +37,7 @@ Styling a radio button:
 @element paper-radio-button
 -->
 
-<link href="../polymer/polymer.html" rel="import">
+<link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../paper-ripple/paper-ripple.html">
 <link rel="import" href="../paper-styles/x-theme.html">
 
@@ -56,7 +56,7 @@ Styling a radio button:
   <link rel="import" type="css" href="paper-radio-button.css">
 
   <template>
-    
+
     <div id="radioContainer">
       <div id="offRadio"></div>
       <div id="onRadio"></div>
@@ -91,7 +91,7 @@ Styling a radio button:
       /**
        * Fired when the checked state changes.
        *
-       * @event core-change
+       * @event iron-change
        */
 
       /**
@@ -170,7 +170,7 @@ Styling a radio button:
 
     checkedChanged: function() {
       this.setAttribute('aria-checked', this.checked ? 'true' : 'false');
-      this.fire('core-change');
+      this.fire('iron-change');
     }
   })
 </script>
