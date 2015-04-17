@@ -23,12 +23,12 @@
     "polymer": "polymer/polymer#0.8-preview",
     "layout": "Polymer/layout#master",
     "paper-ripple": "Polymer/paper-ripple#0.8-preview",
-    "paper-styles": "PolymerLabs/paper-styles#master"
+    "paper-styles": "PolymerLabs/paper-styles#^0.8.0"
   },
   "devDependencies": {
     "webcomponentsjs": "webcomponents/webcomponentsjs#~0.6.1",
     "web-component-tester": "Polymer/web-component-tester#^2.2.3",
-    "iron-doc-viewer": "PolymerElements/iron-doc-viewer#master",
-    "test-fixture": "polymer/test-fixture#master"
+    "iron-doc-viewer": "PolymerElements/iron-doc-viewer#^0.8.0",
+    "test-fixture": "PolymerElements/test-fixture#^0.8.0"
   }
 }
