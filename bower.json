@@ -21,8 +21,7 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#v0.8.0-rc.6",
-    "layout": "Polymer/layout#master",
-    "paper-ripple": "Polymer/paper-ripple#0.8-preview",
+    "paper-ripple": "PolymerElements/paper-ripple#^0.8.0",
     "paper-styles": "PolymerLabs/paper-styles#^0.8.0"
   },
   "devDependencies": {
