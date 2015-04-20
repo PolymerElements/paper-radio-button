@@ -20,7 +20,7 @@
   "ignore": [
   ],
   "dependencies": {
-    "polymer": "polymer/polymer#0.8-preview",
+    "polymer": "Polymer/polymer#v0.8.0-rc.5",
     "layout": "Polymer/layout#master",
     "paper-ripple": "Polymer/paper-ripple#0.8-preview",
     "paper-styles": "PolymerLabs/paper-styles#^0.8.0"
