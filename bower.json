@@ -17,18 +17,17 @@
   },
   "license": "MIT",
   "homepage": "https://github.com/PolymerElements/paper-radio-button",
-  "ignore": [
-  ],
+  "ignore": [],
   "dependencies": {
     "polymer": "Polymer/polymer#v0.8.0-rc.6",
-    "layout": "Polymer/layout#master",
-    "paper-ripple": "Polymer/paper-ripple#0.8-preview",
+    "paper-ripple": "PolymerElements/paper-ripple#^0.8.0",
     "paper-styles": "PolymerLabs/paper-styles#^0.8.0"
   },
   "devDependencies": {
     "webcomponentsjs": "webcomponents/webcomponentsjs#~0.6.1",
     "web-component-tester": "Polymer/web-component-tester#^2.2.3",
     "iron-doc-viewer": "PolymerElements/iron-doc-viewer#^0.8.0",
-    "test-fixture": "PolymerElements/test-fixture#^0.8.0"
+    "test-fixture": "PolymerElements/test-fixture#^0.8.0",
+    "iron-test-helpers": "PolymerElements/iron-test-helpers#^0.8.0"
   }
 }

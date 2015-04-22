@@ -16,7 +16,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
   <script src="../../web-component-tester/browser.js"></script>
   <script src="../../test-fixture/test-fixture-mocha.js"></script>
-  <script src="../../core-focusable/test/test-helpers.js"></script>
+  <script src="../../iron-test-helpers/mock-interactions.js"></script>
 
   <link rel="import" href="../../test-fixture/test-fixture.html">
   <link rel="import" href="../paper-radio-button.html">
@@ -39,11 +39,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script>
     suite('defaults', function() {
       var r1;
-      var r2;
 
       setup(function() {
         r1 = fixture('NoLabel');
-        r2 = fixture('WithLabel');
       });
 
       test('check button via click', function() {
@@ -84,7 +82,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         r1 = fixture('NoLabel');
         r2 = fixture('WithLabel');
       });
-      
+
       test('has aria role "radio"', function() {
         assert.isTrue(r1.getAttribute('role') == 'radio');
         assert.isTrue(r2.getAttribute('role') == 'radio');
