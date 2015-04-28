@@ -7,6 +7,11 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-ripple/paper-ripple.html">
+<link rel="import" href="../paper-styles/default-theme.html">
+<link rel="import" href="../paper-behaviors/paper-radio-button-behavior.html">
+
 <!--
 `paper-radio-button` is a button that can be either checked or unchecked.
 User can tap the radio button to check it.  But it cannot be unchecked by
@@ -37,11 +42,6 @@ Styling a radio button:
 @element paper-radio-button
 -->
 
-<link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../paper-ripple/paper-ripple.html">
-<link rel="import" href="../paper-styles/default-theme.html">
-
-/* TODO: This needs to use core-focusable when it's ready. */
 <dom-module id="paper-radio-button">
   <style is="x-style">
     * {
@@ -75,6 +75,10 @@ Styling a radio button:
     // The custom properties shim is currently an opt-in feature.
     enableCustomStyleProperties: true,
 
+    behaviors: [
+      Polymer.PaperRadioButtonBehavior
+    ],
+
     hostAttributes: {
       role: 'radio',
       'aria-checked': false,
@@ -105,38 +109,8 @@ Styling a radio button:
         type: Boolean,
         value: false,
         reflectToAttribute: true,
-        observer: 'checkedChanged'
-      },
-
-      /**
-       * If true, the user cannot interact with this element.
-       *
-       * @attribute disabled
-       * @type boolean
-       * @default false
-       */
-      disabled: {
-        type: Boolean
-      },
-
-      /**
-       * Normally the user cannot uncheck the radio button by tapping once
-       * checked.  Setting this property to `true` makes the radio button
-       * toggleable from checked to unchecked.
-       *
-       * @attribute isToggle
-       * @type boolean
-       * @default false
-       */
-      isToggle: {
-        type: Boolean,
-        value: false
+        observer: '_checkedChanged'
       }
-    },
-
-    listeners: {
-      keydown: 'onKeyDown',
-      mousedown: 'onMouseDown'
     },
 
     ready: function() {
@@ -147,29 +121,13 @@ Styling a radio button:
       }
     },
 
-    onKeyDown: function(event) {
-      // Enter key.
-      if (event.keyCode === 13) {
-        this.onMouseDown();
-        event.preventDefault();
-      }
+    _buttonStateChanged: function() {
+      this.checked = this.active;
     },
 
-    onMouseDown: function() {
-      if (this.disabled) {
-        return;
-      }
-
-      var old = this.checked;
-      this.checked = !this.isToggle || !this.checked;
-
-      if (this.checked !== old) {
-        this.fire('change');
-      }
-    },
-
-    checkedChanged: function() {
+    _checkedChanged: function() {
       this.setAttribute('aria-checked', this.checked ? 'true' : 'false');
+      this.active = this.checked;
       this.fire('iron-change');
     }
   })
