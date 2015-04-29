@@ -21,7 +21,8 @@
   "dependencies": {
     "polymer": "Polymer/polymer#v0.8.0-rc.7",
     "paper-ripple": "PolymerElements/paper-ripple#^0.8.0",
-    "paper-styles": "PolymerLabs/paper-styles#^0.8.0"
+    "paper-styles": "PolymerLabs/paper-styles#^0.8.0",
+    "paper-behaviors": "PolymerElements/paper-behaviors#^0.8.0"
   },
   "devDependencies": {
     "webcomponentsjs": "webcomponents/webcomponentsjs#~0.6.1",
