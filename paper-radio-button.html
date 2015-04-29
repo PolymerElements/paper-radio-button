@@ -110,6 +110,20 @@ Styling a radio button:
         value: false,
         reflectToAttribute: true,
         observer: '_checkedChanged'
+      },
+
+      /**
+       * If true, the button toggles the active state with each tap or press
+       * of the spacebar.
+       *
+       * @attribute toggles
+       * @type boolean
+       * @default true
+       */
+      toggles: {
+        type: Boolean,
+        value: true,
+        reflectToAttribute: true
       }
     },
 
