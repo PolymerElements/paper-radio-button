@@ -26,7 +26,7 @@ Example:
 
 Styling a radio button:
 
-<style is="x-style">
+<style is="custom-style">
   * {
     /* Unhecked state colors. */
     --paper-radio-button-unchecked-color: #5a5a5a;
@@ -43,7 +43,7 @@ Styling a radio button:
 -->
 
 <dom-module id="paper-radio-button">
-  <style is="x-style">
+  <style is="custom-style">
     * {
       --paper-radio-button-unchecked-color: var(--primary-text-color);
       --paper-radio-button-unchecked-ink-color: var(--primary-text-color);
@@ -71,9 +71,6 @@ Styling a radio button:
 <script>
   Polymer({
     is: 'paper-radio-button',
-
-    // The custom properties shim is currently an opt-in feature.
-    enableCustomStyleProperties: true,
 
     behaviors: [
       Polymer.PaperRadioButtonBehavior
