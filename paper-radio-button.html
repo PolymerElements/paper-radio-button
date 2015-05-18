@@ -43,7 +43,7 @@ Styling a radio button:
 -->
 
 <style is="custom-style">
-  * {
+  :root {
     --paper-radio-button-unchecked-color: var(--primary-text-color);
     --paper-radio-button-unchecked-ink-color: var(--primary-text-color);
 
@@ -67,81 +67,82 @@ Styling a radio button:
     <div id="radioLabel" aria-hidden="true"><content></content></div>
 
   </template>
-</dom-module>
 
-<script>
-  Polymer({
-    is: 'paper-radio-button',
+  <script>
+    Polymer({
+      is: 'paper-radio-button',
 
-    behaviors: [
-      Polymer.PaperRadioButtonBehavior
-    ],
+      behaviors: [
+        Polymer.PaperRadioButtonBehavior
+      ],
 
-    hostAttributes: {
-      role: 'radio',
-      'aria-checked': false,
-      tabindex: 0
-    },
-
-    properties: {
-      /**
-       * Fired when the checked state changes due to user interaction.
-       *
-       * @event change
-       */
-
-      /**
-       * Fired when the checked state changes.
-       *
-       * @event iron-change
-       */
-
-      /**
-       * Gets or sets the state, `true` is checked and `false` is unchecked.
-       *
-       * @attribute checked
-       * @type boolean
-       * @default false
-       */
-      checked: {
-        type: Boolean,
-        value: false,
-        reflectToAttribute: true,
-        notify: true,
-        observer: '_checkedChanged'
+      hostAttributes: {
+        role: 'radio',
+        'aria-checked': false,
+        tabindex: 0
       },
 
-      /**
-       * If true, the button toggles the active state with each tap or press
-       * of the spacebar.
-       *
-       * @attribute toggles
-       * @type boolean
-       * @default true
-       */
-      toggles: {
-        type: Boolean,
-        value: true,
-        reflectToAttribute: true
+      properties: {
+        /**
+         * Fired when the checked state changes due to user interaction.
+         *
+         * @event change
+         */
+
+        /**
+         * Fired when the checked state changes.
+         *
+         * @event iron-change
+         */
+
+        /**
+         * Gets or sets the state, `true` is checked and `false` is unchecked.
+         *
+         * @attribute checked
+         * @type boolean
+         * @default false
+         */
+        checked: {
+          type: Boolean,
+          value: false,
+          reflectToAttribute: true,
+          notify: true,
+          observer: '_checkedChanged'
+        },
+
+        /**
+         * If true, the button toggles the active state with each tap or press
+         * of the spacebar.
+         *
+         * @attribute toggles
+         * @type boolean
+         * @default true
+         */
+        toggles: {
+          type: Boolean,
+          value: true,
+          reflectToAttribute: true
+        }
+      },
+
+      ready: function() {
+        if (this.$.radioLabel.innerText == '') {
+          this.$.radioLabel.hidden = true;
+        } else {
+          this.setAttribute('aria-label', this.$.radioLabel.textContent);
+        }
+      },
+
+      _buttonStateChanged: function() {
+        this.checked = this.active;
+      },
+
+      _checkedChanged: function() {
+        this.setAttribute('aria-checked', this.checked ? 'true' : 'false');
+        this.active = this.checked;
+        this.fire('iron-change');
       }
-    },
-
-    ready: function() {
-      if (this.$.radioLabel.innerText == '') {
-        this.$.radioLabel.hidden = true;
-      } else {
-        this.setAttribute('aria-label', this.$.radioLabel.textContent);
-      }
-    },
-
-    _buttonStateChanged: function() {
-      this.checked = this.active;
-    },
-
-    _checkedChanged: function() {
-      this.setAttribute('aria-checked', this.checked ? 'true' : 'false');
-      this.active = this.checked;
-      this.fire('iron-change');
-    }
-  })
-</script>
+    })
+  </script>
+  
+</dom-module>
