@@ -9,13 +9,15 @@ are inside a radio group, only one radio button in the group can be checked.
 
 Example:
 
-    <paper-radio-button></paper-radio-button>
-
+```html
+<paper-radio-button></paper-radio-button>
+```
 Styling a radio button:
 
+```html
 <style is="custom-style">
   * {
-    /* Unhecked state colors. */
+    /* Unchecked state colors. */
     --paper-radio-button-unchecked-color: #5a5a5a;
     --paper-radio-button-unchecked-ink-color: #5a5a5a;
 
@@ -24,3 +26,4 @@ Styling a radio button:
     --paper-radio-button-checked-ink-color: #0f9d58;
   }
 </style>
+```
