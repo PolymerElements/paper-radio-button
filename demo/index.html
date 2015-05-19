@@ -27,6 +27,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       --paper-radio-button-checked-color: #4285f4;
       --paper-radio-button-checked-ink-color: #4285f4;
+
+      --paper-radio-button-label-color: #009987;
     }
 
     .label {
@@ -43,23 +45,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <section>
     <div class="label">Radio button</div>
     <paper-radio-button></paper-radio-button>
+    <paper-radio-button checked></paper-radio-button>
+    <paper-radio-button disabled></paper-radio-button>
+    <paper-radio-button checked disabled></paper-radio-button>
+
     <br>
     <paper-radio-button>Radio button with label</paper-radio-button>
-  </section>
-
-  <section>
-    <div class="label">Radio button (disabled)</div>
-    <paper-radio-button disabled></paper-radio-button>
-  </section>
-
-  <section>
-    <div class="label">Radio button (checked, disabled)</div>
-    <paper-radio-button checked disabled></paper-radio-button>
-  </section>
-
-  <section>
-    <div class="label">Radio button (toggles red to blue)</div>
-    <paper-radio-button class="blue"></paper-radio-button>
+    <br>
+    <paper-radio-button disabled>Disabled button with label</paper-radio-button>
+    <br>
+    <paper-radio-button class="blue">Extremely colourful button</paper-radio-button>
   </section>
 </body>
 </html>

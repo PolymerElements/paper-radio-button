@@ -32,6 +32,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   width: 48px;
   height: 48px;
   color: var(--paper-radio-button-unchecked-ink-color);
+  opacity: 0.6;
 }
 
 :host #ink[checked] {
@@ -80,6 +81,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   margin-left: 10px;
   white-space: normal;
   pointer-events: none;
+  color: var(--paper-radio-button-label-color);
 }
 
 #radioLabel[hidden] {
@@ -91,15 +93,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   pointer-events: none;
 }
 
-:host([disabled]) #offRadio,
-:host([disabled]) #onRadio {
-  opacity: 0.33;
-}
-
 :host([disabled]) #offRadio {
   border-color: var(--paper-radio-button-unchecked-color);
+  opacity: 0.5;
 }
 
 :host([disabled][checked]) #onRadio {
   background-color: var(--paper-radio-button-unchecked-color);
+  opacity: 0.5;
+}
+
+:host([disabled]) #radioLabel {
+  /* slightly darker than the button, so that it's readable */
+  opacity: 0.65;
 }
