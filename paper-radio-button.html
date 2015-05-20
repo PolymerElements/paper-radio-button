@@ -35,6 +35,9 @@ Styling a radio button:
     /* Checked state colors. */
     --paper-radio-button-checked-color: #009688;
     --paper-radio-button-checked-ink-color: #0f9d58;
+
+    /* Label color. */
+    --paper-radio-button-label-color: #009987;
   }
 </style>
 
@@ -49,6 +52,8 @@ Styling a radio button:
 
     --paper-radio-button-checked-color: var(--default-primary-color);
     --paper-radio-button-checked-ink-color: var(--default-primary-color);
+
+    --paper-radio-button-label-color: var(--primary-text-color);
   }
 </style>
 
@@ -134,6 +139,9 @@ Styling a radio button:
       },
 
       _buttonStateChanged: function() {
+        if (this.disabled) {
+          return;
+        }
         this.checked = this.active;
       },
 
@@ -144,5 +152,5 @@ Styling a radio button:
       }
     })
   </script>
-  
+
 </dom-module>
