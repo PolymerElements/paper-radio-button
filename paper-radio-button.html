@@ -27,7 +27,7 @@ Example:
 Styling a radio button:
 
 <style is="custom-style">
-  * {
+  :root {
     /* Unhecked state colors. */
     --paper-radio-button-unchecked-color: #5a5a5a;
     --paper-radio-button-unchecked-ink-color: #5a5a5a;
@@ -102,10 +102,6 @@ Styling a radio button:
 
         /**
          * Gets or sets the state, `true` is checked and `false` is unchecked.
-         *
-         * @attribute checked
-         * @type boolean
-         * @default false
          */
         checked: {
           type: Boolean,
@@ -118,10 +114,6 @@ Styling a radio button:
         /**
          * If true, the button toggles the active state with each tap or press
          * of the spacebar.
-         *
-         * @attribute toggles
-         * @type boolean
-         * @default true
          */
         toggles: {
           type: Boolean,
