@@ -4,7 +4,7 @@
 User can tap the radio button to check it.  But it cannot be unchecked by
 tapping once checked.
 
-Use `paper-radio-group` to group a set of radio buttons.  When radio buttons
+Use `paper-radio-group` to group a set of radio buttons. When radio buttons
 are inside a radio group, only one radio button in the group can be checked.
 
 Example:
@@ -16,7 +16,7 @@ Styling a radio button:
 
 ```html
 <style is="custom-style">
-  * {
+  :root {
     /* Unchecked state colors. */
     --paper-radio-button-unchecked-color: #5a5a5a;
     --paper-radio-button-unchecked-ink-color: #5a5a5a;
