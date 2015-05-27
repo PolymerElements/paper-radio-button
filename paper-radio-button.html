@@ -120,10 +120,10 @@ Custom property | Description | Default
       },
 
       ready: function() {
-        if (this.$.radioLabel.innerText == '') {
+        if (Polymer.dom(this).textContent == '') {
           this.$.radioLabel.hidden = true;
         } else {
-          this.setAttribute('aria-label', this.$.radioLabel.textContent);
+          this.setAttribute('aria-label', Polymer.dom(this).textContent);
         }
         this._isReady = true;
       },
