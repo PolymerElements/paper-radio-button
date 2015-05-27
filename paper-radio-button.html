@@ -125,13 +125,16 @@ Custom property | Description | Default
         } else {
           this.setAttribute('aria-label', this.$.radioLabel.textContent);
         }
+        this._isReady = true;
       },
 
       _buttonStateChanged: function() {
         if (this.disabled) {
           return;
         }
-        this.checked = this.active;
+        if (this._isReady) {
+          this.checked = this.active;
+        }
       },
 
       _checkedChanged: function() {
