@@ -19,6 +19,7 @@ Styling a radio button:
   :root {
     /* Unchecked state colors. */
     --paper-radio-button-unchecked-color: #5a5a5a;
+    --paper-radio-button-unchecked-background-color: #fff;
     --paper-radio-button-unchecked-ink-color: #5a5a5a;
 
     /* Checked state colors. */
