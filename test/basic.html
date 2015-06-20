@@ -46,31 +46,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       test('check button via click', function() {
         r1.addEventListener('click', function() {
-          assert.isTrue(r1.getAttribute('aria-checked'));
+          assert.isTrue(r1.getAttribute('aria-checked') == 'true');
           assert.isTrue(r1.checked);
-          done();
         });
-        MockInteractions.down(r1);
+        MockInteractions.tap(r1);
       });
 
       test('toggle button via click', function() {
         r1.checked = true;
         r1.addEventListener('click', function() {
-          assert.isFalse(r1.getAttribute('aria-checked'));
+          assert.isFalse(r1.getAttribute('aria-checked') != 'false');
           assert.isFalse(r1.checked);
-          done();
         });
-        MockInteractions.down(r1);
+        MockInteractions.tap(r1);
       });
 
       test('disabled button cannot be clicked', function() {
         r1.disabled = true;
+        r1.checked = true;
         r1.addEventListener('click', function() {
-          assert.isTrue(r1.getAttribute('aria-checked'));
+          assert.isTrue(r1.getAttribute('aria-checked') == 'true');
           assert.isTrue(r1.checked);
-          done();
         });
-        MockInteractions.down(r1);
+        MockInteractions.tap(r1);
       });
     });
 
