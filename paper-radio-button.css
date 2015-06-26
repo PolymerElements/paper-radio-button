@@ -10,6 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 :host {
   display: inline-block;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 :host(:focus) {
@@ -21,7 +22,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   position: relative;
   width: 16px;
   height: 16px;
-  cursor: pointer;
   vertical-align: middle;
 }
 
@@ -92,6 +92,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 /* disabled state */
 :host([disabled]) {
   pointer-events: none;
+  cursor: default;
 }
 
 :host([disabled]) #offRadio {

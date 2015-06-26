@@ -71,7 +71,7 @@ Custom property | Description | Default
       hostAttributes: {
         role: 'radio',
         'aria-checked': false,
-        tabindex: 0
+        tabindex: -1
       },
 
       properties: {
@@ -130,6 +130,7 @@ Custom property | Description | Default
       _checkedChanged: function() {
         this.setAttribute('aria-checked', this.checked ? 'true' : 'false');
         this.active = this.checked;
+        this.setAttribute('tabindex', this.active ? 0 : -1);
         this.fire('iron-change');
       }
     })
