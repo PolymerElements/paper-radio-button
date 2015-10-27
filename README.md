@@ -1,4 +1,4 @@
-# paper-radio-button
+# paper-radio-button [![Build Status](https://travis-ci.org/PolymerElements/paper-radio-button.svg?branch=master)](https://travis-ci.org/PolymerElements/paper-radio-button)
 
 `paper-radio-button` is a button that can be either checked or unchecked.
 User can tap the radio button to check or uncheck it.
