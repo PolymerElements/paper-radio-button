@@ -9,7 +9,7 @@ Edit this file, and the bot will squash your changes :)
 
 -->
 
-_[Demo and API Docs](https://elements.polymer-project.org/elements/paper-radio-button)_
+[![Build Status](https://travis-ci.org/PolymerElements/paper-radio-button.svg?branch=master)](https://travis-ci.org/PolymerElements/paper-radio-button)_[Demo and API Docs](https://elements.polymer-project.org/elements/paper-radio-button)_
 
 
 ##&lt;paper-radio-button&gt;
