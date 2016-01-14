@@ -44,8 +44,8 @@ The following custom properties and mixins are available for styling:
 | `--paper-radio-button-unchecked-background-color` | Radio button background color when the input is not checked | `transparent` |
 | `--paper-radio-button-unchecked-color` | Radio button color when the input is not checked | `--primary-text-color` |
 | `--paper-radio-button-unchecked-ink-color` | Selected/focus ripple color when the input is not checked | `--primary-text-color` |
-| `--paper-radio-button-checked-color` | Radio button color when the input is checked | `--default-primary-color` |
-| `--paper-radio-button-checked-ink-color` | Selected/focus ripple color when the input is checked | `--default-primary-color` |
+| `--paper-radio-button-checked-color` | Radio button color when the input is checked | `--primary-color` |
+| `--paper-radio-button-checked-ink-color` | Selected/focus ripple color when the input is checked | `--primary-color` |
 | `--paper-radio-button-label-color` | Label color | `--primary-text-color` |
 | `--paper-radio-button-label-spacing` | Spacing between the label and the button | `10px` |
 
