@@ -49,4 +49,7 @@ The following custom properties and mixins are available for styling:
 | `--paper-radio-button-label-color` | Label color | `--primary-text-color` |
 | `--paper-radio-button-label-spacing` | Spacing between the label and the button | `10px` |
 
+This element applies the mixin `--paper-font-common-base` but does not import `paper-styles/typography.html`.
+In order to apply the `Roboto` font to this element, make sure you've imported `paper-styles/typography.html`.
+
 
