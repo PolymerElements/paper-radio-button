@@ -68,6 +68,7 @@ In order to apply the `Roboto` font to this element, make sure you've imported `
       }
 
       #radioContainer {
+        display: inline-block;
         @apply(--layout-inline);
         @apply(--layout-center-center);
         position: relative;
@@ -116,7 +117,12 @@ In order to apply the `Roboto` font to this element, make sure you've imported `
       }
 
       #onRadio {
-        box-sizing: content-box;
+        box-sizing: border-box;
+        position: absolute;
+        top: calc(var(--calculated-paper-radio-button-size) / 4);
+        left: calc(var(--calculated-paper-radio-button-size) / 4);
+        right: calc(var(--calculated-paper-radio-button-size) / 4);
+        bottom: calc(var(--calculated-paper-radio-button-size) / 4);
         width: 50%;
         height: 50%;
         border-radius: 50%;
