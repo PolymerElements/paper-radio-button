@@ -166,10 +166,17 @@ In order to apply the `Roboto` font to this element, make sure you've imported `
       }
     </style>
 
+    <template is="dom-if" if="[[labelFirst]]">
+      <div id="radioLabel"><content></content></div>
+    </template>
     <div id="radioContainer">
       <div id="offRadio"></div>
       <div id="onRadio"></div>
     </div>
+    <template is="dom-if" if="[[!labelFirst]]">
+      <div id="radioLabel"><content></content></div>
+    </template>
+  </template>
 
     <div id="radioLabel"><content></content></div>
   </template>
@@ -204,6 +211,14 @@ In order to apply the `Roboto` font to this element, make sure you've imported `
         ariaActiveAttribute: {
           type: String,
           value: 'aria-checked'
+        },
+          
+        /**
+         * If true the label content is inserted previous the button element
+         */
+        labelFirst: {
+          type: Boolean,
+          value: false
         }
       },
 
