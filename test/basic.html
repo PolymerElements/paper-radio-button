@@ -139,8 +139,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     suite('ink size', function() {
       var radioButtons;
 
-      setup(function() {
+      setup(function(done) {
         radioButtons = fixture('WithDifferentSizes');
+
+        // Wait for all radio buttons to set their default ink sizes, if any.
+        // See polymer#4009 for more details.
+        Promise.all(radioButtons.map(function(radioButton) {
+          return new Promise(function(resolve, reject) {
+            Polymer.RenderStatus.afterNextRender(radioButton, function() {
+              resolve();
+            });
+          });
+        })).then(function() {
+          done();
+        });
       });
 
       test('`--paper-radio-button-ink-size` sets the ink size', function() {
