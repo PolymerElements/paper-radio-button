@@ -11,7 +11,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../paper-behaviors/paper-checked-element-behavior.html">
 <link rel="import" href="../paper-styles/default-theme.html">
-<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 
 <!--
 Material design: [Radio button](https://www.google.com/design/spec/components/selection-controls.html#selection-controls-radio-button)
@@ -75,8 +75,15 @@ In order to apply the `Roboto` font to this element, make sure you've imported `
       }
 
       #radioContainer {
-        @apply(--layout-inline);
-        @apply(--layout-center-center);
+        display: -ms-inline-flexbox;
+        display: -webkit-inline-flex;
+        display: inline-flex;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
         position: relative;
         width: var(--calculated-paper-radio-button-size);
         height: var(--calculated-paper-radio-button-size);
@@ -142,7 +149,7 @@ In order to apply the `Roboto` font to this element, make sure you've imported `
         position: relative;
         display: inline-block;
         vertical-align: middle;
-        margin-left: var(--paper-radio-button-label-spacing, 10px);
+        margin: 0 var(--paper-radio-button-label-spacing, 5px);
         white-space: normal;
         color: var(--paper-radio-button-label-color, --primary-text-color);
 
@@ -179,13 +186,16 @@ In order to apply the `Roboto` font to this element, make sure you've imported `
         opacity: 0.65;
       }
     </style>
-
+    <template is="dom-if" if="[[labelFirst]]">
+      <div id="radioLabel"><content></content></div>
+    </template>
     <div id="radioContainer">
       <div id="offRadio"></div>
       <div id="onRadio"></div>
     </div>
-
-    <div id="radioLabel"><content></content></div>
+    <template is="dom-if" if="[[!labelFirst]]">
+      <div id="radioLabel"><content></content></div>
+    </template>
   </template>
 
   <script>
@@ -218,6 +228,13 @@ In order to apply the `Roboto` font to this element, make sure you've imported `
         ariaActiveAttribute: {
           type: String,
           value: 'aria-checked'
+        },
+        /**
+         * If true the label content is inserted previous the button element
+         */
+        labelFirst: {
+          type: Boolean,
+          value: false
         }
       },
 
