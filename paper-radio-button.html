@@ -42,6 +42,7 @@ Custom property | Description | Default
 `--paper-radio-button-size` | Size of the radio button | `16px`
 `--paper-radio-button-ink-size` | Size of the ripple | `48px`
 `--paper-radio-button-label-color` | Label color | `--primary-text-color`
+`--paper-radio-button-checked-label-color` | Label color when the input is checked | `--primary-text-color`
 `--paper-radio-button-label-spacing` | Spacing between the label and the button | `10px`
 `--paper-radio-button-radio-container` | A mixin applied to the internal radio container | `{}`
 `--paper-radio-button-label` | A mixin applied to the internal label | `{}`
@@ -151,6 +152,10 @@ In order to apply the `Roboto` font to this element, make sure you've imported `
 
       :host([checked]) #radioLabel {
         @apply --paper-radio-button-label-checked;
+      }
+        
+      :host([checked]) #radioLabel {
+        color: var(--paper-radio-button-checked-label-color, --primary-text-color);
       }
 
       :host-context([dir="rtl"]) #radioLabel {
