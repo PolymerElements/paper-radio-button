@@ -1,0 +1,10 @@
+{
+  "name": "@polymer/paper-radio-button",
+  "private": true,
+  "description": "A material design radio button",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/PolymerElements/paper-radio-button"
+  },
+  "license": "BSD-3-Clause"
+}
