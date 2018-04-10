@@ -192,15 +192,9 @@ In order to apply the `Roboto` font to this element, make sure you've imported `
     Polymer({
       is: 'paper-radio-button',
 
-      behaviors: [
-        Polymer.PaperCheckedElementBehavior
-      ],
+      behaviors: [Polymer.PaperCheckedElementBehavior],
 
-      hostAttributes: {
-        role: 'radio',
-        'aria-checked': false,
-        tabindex: 0
-      },
+      hostAttributes: {role: 'radio', 'aria-checked': false, tabindex: 0},
 
       properties: {
         /**
@@ -215,10 +209,7 @@ In order to apply the `Roboto` font to this element, make sure you've imported `
          * @event iron-change
          */
 
-        ariaActiveAttribute: {
-          type: String,
-          value: 'aria-checked'
-        }
+        ariaActiveAttribute: {type: String, value: 'aria-checked'}
       },
 
       ready: function() {
@@ -229,10 +220,14 @@ In order to apply the `Roboto` font to this element, make sure you've imported `
         // Wait until styles have resolved to check for the default sentinel.
         // See polymer#4009 for more details.
         Polymer.RenderStatus.afterNextRender(this, function() {
-          var inkSize = this.getComputedStyleValue('--calculated-paper-radio-button-ink-size').trim();
+          var inkSize =
+              this.getComputedStyleValue('--calculated-paper-radio-button-ink-size')
+                  .trim();
           // If unset, compute and set the default `--paper-radio-button-ink-size`.
           if (inkSize === '-1px') {
-            var size = parseFloat(this.getComputedStyleValue('--calculated-paper-radio-button-size').trim());
+            var size = parseFloat(
+                this.getComputedStyleValue('--calculated-paper-radio-button-size')
+                    .trim());
             var defaultInkSize = Math.floor(3 * size);
 
             // The button and ripple need to have the same parity so that their

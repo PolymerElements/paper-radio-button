@@ -170,34 +170,57 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       test('`--paper-radio-button-ink-size` sets the ink size', function() {
         var radioButton = fixture('CustomInkSize');
-        assert.equal(radioButton.getComputedStyleValue('--calculated-paper-radio-button-size').trim(), '25px');
-        assert.equal(radioButton.getComputedStyleValue('--calculated-paper-radio-button-ink-size').trim(), '30px');
+        assert.equal(
+            radioButton
+                .getComputedStyleValue('--calculated-paper-radio-button-size')
+                .trim(),
+            '25px');
+        assert.equal(
+            radioButton
+                .getComputedStyleValue('--calculated-paper-radio-button-ink-size')
+                .trim(),
+            '30px');
       });
 
       test('ink sizes are near (3 * radio button size) by default', function() {
         radioButtons.forEach(function(radioButton) {
-          var size = parseFloat(radioButton.getComputedStyleValue('--calculated-paper-radio-button-size'), 10);
-          var inkSize = parseFloat(radioButton.getComputedStyleValue('--calculated-paper-radio-button-ink-size'), 10);
+          var size = parseFloat(
+              radioButton.getComputedStyleValue(
+                  '--calculated-paper-radio-button-size'),
+              10);
+          var inkSize = parseFloat(
+              radioButton.getComputedStyleValue(
+                  '--calculated-paper-radio-button-ink-size'),
+              10);
           assert.approximately(inkSize / size, 3, 0.1);
         });
       });
 
       test('ink sizes are integers', function() {
         radioButtons.forEach(function(radioButton) {
-          var unparsedInkSize = radioButton.getComputedStyleValue('--calculated-paper-radio-button-ink-size');
+          var unparsedInkSize = radioButton.getComputedStyleValue(
+              '--calculated-paper-radio-button-ink-size');
           var floatInkSize = parseFloat(unparsedInkSize, 10);
           var intInkSize = parseInt(unparsedInkSize, 10);
           assert.equal(floatInkSize, intInkSize);
         });
       });
 
-      test('ink size parity matches radio button size parity (centers are aligned)', function() {
-        radioButtons.forEach(function(radioButton) {
-          var size = parseInt(radioButton.getComputedStyleValue('--calculated-paper-radio-button-size'), 10);
-          var inkSize = parseInt(radioButton.getComputedStyleValue('--calculated-paper-radio-button-ink-size'), 10);
-          assert.equal(size % 2, inkSize % 2);
-        });
-      });
+      test(
+          'ink size parity matches radio button size parity (centers are aligned)',
+          function() {
+            radioButtons.forEach(function(radioButton) {
+              var size = parseInt(
+                  radioButton.getComputedStyleValue(
+                      '--calculated-paper-radio-button-size'),
+                  10);
+              var inkSize = parseInt(
+                  radioButton.getComputedStyleValue(
+                      '--calculated-paper-radio-button-ink-size'),
+                  10);
+              assert.equal(size % 2, inkSize % 2);
+            });
+          });
     });
 
     suite('a11y', function() {
@@ -220,7 +243,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       test('button respects the user set aria-label', function() {
         var c = fixture('AriaLabel');
-        assert.isTrue(c.getAttribute('aria-label') == "Batman");
+        assert.isTrue(c.getAttribute('aria-label') == 'Batman');
       });
 
       a11ySuite('NoLabel');
