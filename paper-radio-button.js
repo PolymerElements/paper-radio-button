@@ -1,4 +1,4 @@
-<!--
+/**
 @license
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
 This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
@@ -6,14 +6,8 @@ The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-
-<link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../paper-behaviors/paper-checked-element-behavior.html">
-<link rel="import" href="../paper-styles/default-theme.html">
-<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
-
-<!--
+*/
+/**
 Material design: [Radio button](https://www.google.com/design/spec/components/selection-controls.html#selection-controls-radio-button)
 
 `paper-radio-button` is a button that can be either checked or unchecked.
@@ -54,10 +48,24 @@ In order to apply the `Roboto` font to this element, make sure you've imported `
 @element paper-radio-button
 @hero hero.svg
 @demo demo/index.html
--->
+*/
+/*
+  FIXME(polymer-modulizer): the above comments were extracted
+  from HTML and may be out of place here. Review them and
+  then delete this comment!
+*/
+import '@polymer/polymer/polymer-legacy.js';
 
-<dom-module id="paper-radio-button">
-  <template strip-whitespace>
+import { PaperCheckedElementBehavior } from '@polymer/paper-behaviors/paper-checked-element-behavior.js';
+import '@polymer/paper-styles/default-theme.js';
+import '@polymer/iron-flex-layout/iron-flex-layout.js';
+import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
+import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
+const $_documentContainer = document.createElement('template');
+$_documentContainer.setAttribute('style', 'display: none;');
+
+$_documentContainer.innerHTML = `<dom-module id="paper-radio-button">
+  <template strip-whitespace="">
     <style>
       :host {
         display: inline-block;
@@ -66,7 +74,7 @@ In order to apply the `Roboto` font to this element, make sure you've imported `
         cursor: pointer;
         @apply --paper-font-common-base;
         --calculated-paper-radio-button-size: var(--paper-radio-button-size, 16px);
-        /* -1px is a sentinel for the default and is replace in `attached`. */
+        /* -1px is a sentinel for the default and is replace in \`attached\`. */
         --calculated-paper-radio-button-ink-size: var(--paper-radio-button-ink-size, -1px);
       }
 
@@ -188,60 +196,61 @@ In order to apply the `Roboto` font to this element, make sure you've imported `
     <div id="radioLabel"><slot></slot></div>
   </template>
 
-  <script>
-    Polymer({
-      is: 'paper-radio-button',
+  
+</dom-module>`;
 
-      behaviors: [Polymer.PaperCheckedElementBehavior],
+document.head.appendChild($_documentContainer.content);
+Polymer({
+  is: 'paper-radio-button',
 
-      hostAttributes: {role: 'radio', 'aria-checked': false, tabindex: 0},
+  behaviors: [PaperCheckedElementBehavior],
 
-      properties: {
-        /**
-         * Fired when the checked state changes due to user interaction.
-         *
-         * @event change
-         */
+  hostAttributes: {role: 'radio', 'aria-checked': false, tabindex: 0},
 
-        /**
-         * Fired when the checked state changes.
-         *
-         * @event iron-change
-         */
+  properties: {
+    /**
+     * Fired when the checked state changes due to user interaction.
+     *
+     * @event change
+     */
 
-        ariaActiveAttribute: {type: String, value: 'aria-checked'}
-      },
+    /**
+     * Fired when the checked state changes.
+     *
+     * @event iron-change
+     */
 
-      ready: function() {
-        this._rippleContainer = this.$.radioContainer;
-      },
+    ariaActiveAttribute: {type: String, value: 'aria-checked'}
+  },
 
-      attached: function() {
-        // Wait until styles have resolved to check for the default sentinel.
-        // See polymer#4009 for more details.
-        Polymer.RenderStatus.afterNextRender(this, function() {
-          var inkSize =
-              this.getComputedStyleValue('--calculated-paper-radio-button-ink-size')
-                  .trim();
-          // If unset, compute and set the default `--paper-radio-button-ink-size`.
-          if (inkSize === '-1px') {
-            var size = parseFloat(
-                this.getComputedStyleValue('--calculated-paper-radio-button-size')
-                    .trim());
-            var defaultInkSize = Math.floor(3 * size);
+  ready: function() {
+    this._rippleContainer = this.$.radioContainer;
+  },
 
-            // The button and ripple need to have the same parity so that their
-            // centers align.
-            if (defaultInkSize % 2 !== size % 2) {
-              defaultInkSize++;
-            }
+  attached: function() {
+    // Wait until styles have resolved to check for the default sentinel.
+    // See polymer#4009 for more details.
+    afterNextRender(this, function() {
+      var inkSize =
+          this.getComputedStyleValue('--calculated-paper-radio-button-ink-size')
+              .trim();
+      // If unset, compute and set the default `--paper-radio-button-ink-size`.
+      if (inkSize === '-1px') {
+        var size = parseFloat(
+            this.getComputedStyleValue('--calculated-paper-radio-button-size')
+                .trim());
+        var defaultInkSize = Math.floor(3 * size);
 
-            this.updateStyles({
-              '--paper-radio-button-ink-size': defaultInkSize + 'px',
-            });
-          }
+        // The button and ripple need to have the same parity so that their
+        // centers align.
+        if (defaultInkSize % 2 !== size % 2) {
+          defaultInkSize++;
+        }
+
+        this.updateStyles({
+          '--paper-radio-button-ink-size': defaultInkSize + 'px',
         });
-      },
-    })
-  </script>
-</dom-module>
+      }
+    });
+  },
+})
