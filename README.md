@@ -1,38 +1,88 @@
+[![Published on NPM](https://img.shields.io/npm/v/@polymer/paper-radio-button.svg)](https://www.npmjs.com/package/@polymer/paper-radio-button)
 [![Build status](https://travis-ci.org/PolymerElements/paper-radio-button.svg?branch=master)](https://travis-ci.org/PolymerElements/paper-radio-button)
-[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/PolymerElements/paper-radio-button)
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://webcomponents.org/element/@polymer/paper-radio-button)
 
 ## &lt;paper-radio-button&gt;
 
-Material design: [Radio button](https://www.google.com/design/spec/components/selection-controls.html#selection-controls-radio-button)
+`paper-radio-button` is a button that can be either checked or unchecked. The
+user can tap the radio button to check or uncheck it.
 
-`paper-radio-button` is a button that can be either checked or unchecked.
-User can tap the radio button to check or uncheck it.
-
-Use a `<paper-radio-group>` to group a set of radio buttons.  When radio buttons
+Use a `<paper-radio-group>` to group a set of radio buttons. When radio buttons
 are inside a radio group, exactly one radio button in the group can be checked
 at any time.
 
-Example:
+See: [Documentation](https://www.webcomponents.org/element/@polymer/paper-radio-button),
+  [Demo](https://www.webcomponents.org/element/@polymer/paper-radio-button/demo/demo/index.html).
 
-```html
-<paper-radio-button></paper-radio-button>
-<paper-radio-button>Item label</paper-radio-button>
+## Usage
+
+### Installation
+
+```
+npm install --save @polymer/paper-radio-button
 ```
 
-### Styling
+### In an HTML file
 
-The following custom properties and mixins are available for styling:
+```html
+<html>
+  <head>
+    <script type="module">
+      import '@polymer/paper-radio-button/paper-radio-button.js';
+    </script>
+  </head>
+  <body>
+    <paper-radio-button>Unchecked</paper-radio-button>
+    <paper-radio-button checked>Checked</paper-radio-button>
+    <paper-radio-button disabled>Disabled</paper-radio-button>
+  </body>
+</html>
+```
 
-| Custom property | Description | Default |
-| --- | --- | --- |
-| `--paper-radio-button-unchecked-background-color` | Radio button background color when the input is not checked | `transparent` |
-| `--paper-radio-button-unchecked-color` | Radio button color when the input is not checked | `--primary-text-color` |
-| `--paper-radio-button-unchecked-ink-color` | Selected/focus ripple color when the input is not checked | `--primary-text-color` |
-| `--paper-radio-button-checked-color` | Radio button color when the input is checked | `--primary-color` |
-| `--paper-radio-button-checked-ink-color` | Selected/focus ripple color when the input is checked | `--primary-color` |
-| `--paper-radio-button-size` | Size of the radio button | `16px` |
-| `--paper-radio-button-label-color` | Label color | `--primary-text-color` |
-| `--paper-radio-button-label-spacing` | Spacing between the label and the button | `10px` |
+### In a Polymer 3 element
 
-This element applies the mixin `--paper-font-common-base` but does not import `paper-styles/typography.html`.
-In order to apply the `Roboto` font to this element, make sure you've imported `paper-styles/typography.html`.
+```js
+import {PolymerElement} from '@polymer/polymer/polymer-element.js';
+import {html} from '@polymer/polymer/lib/utils/html-tag.js';
+
+import '@polymer/paper-radio-button/paper-radio-button.js';
+
+class ExampleElement extends PolymerElement {
+  static get template() {
+    return html`
+      <paper-radio-button>Unchecked</paper-radio-button>
+      <paper-radio-button checked>Checked</paper-radio-button>
+      <paper-radio-button disabled>Disabled</paper-radio-button>
+    `;
+  }
+}
+
+customElements.define('example-element', ExampleElement);
+```
+
+## Contributing
+
+If you want to send a PR to this element, here are the instructions for running
+the tests and demo locally:
+
+### Installation
+
+```sh
+git clone https://github.com/PolymerElements/paper-radio-button
+cd paper-radio-button
+npm install
+npm install -g polymer-cli
+```
+
+### Running the demo locally
+
+```sh
+polymer serve --npm
+open http://127.0.0.1:<port>/demo/
+```
+
+### Running the tests
+
+```sh
+polymer test --npm
+```

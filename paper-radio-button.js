@@ -150,8 +150,8 @@ template.setAttribute('strip-whitespace', '');
 /**
 Material design: [Radio button](https://www.google.com/design/spec/components/selection-controls.html#selection-controls-radio-button)
 
-`paper-radio-button` is a button that can be either checked or unchecked. User
-can tap the radio button to check or uncheck it.
+`paper-radio-button` is a button that can be either checked or unchecked. The
+user can tap the radio button to check or uncheck it.
 
 Use a `<paper-radio-group>` to group a set of radio buttons. When radio buttons
 are inside a radio group, exactly one radio button in the group can be checked
