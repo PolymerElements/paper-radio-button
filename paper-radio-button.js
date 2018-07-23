@@ -8,13 +8,14 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
 import '@polymer/polymer/polymer-legacy.js';
-
-import { PaperCheckedElementBehavior } from '@polymer/paper-behaviors/paper-checked-element-behavior.js';
 import '@polymer/paper-styles/default-theme.js';
 import '@polymer/iron-flex-layout/iron-flex-layout.js';
-import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
-import { html } from '@polymer/polymer/lib/utils/html-tag.js';
-import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
+
+import {PaperCheckedElementBehavior} from '@polymer/paper-behaviors/paper-checked-element-behavior.js';
+import {Polymer} from '@polymer/polymer/lib/legacy/polymer-fn.js';
+import {html} from '@polymer/polymer/lib/utils/html-tag.js';
+import {afterNextRender} from '@polymer/polymer/lib/utils/render-status.js';
+
 const template = html`
 <style>
   :host {
@@ -149,10 +150,10 @@ template.setAttribute('strip-whitespace', '');
 /**
 Material design: [Radio button](https://www.google.com/design/spec/components/selection-controls.html#selection-controls-radio-button)
 
-`paper-radio-button` is a button that can be either checked or unchecked.
-User can tap the radio button to check or uncheck it.
+`paper-radio-button` is a button that can be either checked or unchecked. User
+can tap the radio button to check or uncheck it.
 
-Use a `<paper-radio-group>` to group a set of radio buttons.  When radio buttons
+Use a `<paper-radio-group>` to group a set of radio buttons. When radio buttons
 are inside a radio group, exactly one radio button in the group can be checked
 at any time.
 
@@ -180,8 +181,9 @@ Custom property | Description | Default
 `--paper-radio-button-label` | A mixin applied to the internal label | `{}`
 `--paper-radio-button-label-checked` | A mixin applied to the internal label when the radio button is checked | `{}`
 
-This element applies the mixin `--paper-font-common-base` but does not import `paper-styles/typography.html`.
-In order to apply the `Roboto` font to this element, make sure you've imported `paper-styles/typography.html`.
+This element applies the mixin `--paper-font-common-base` but does not import
+`paper-styles/typography.html`. In order to apply the `Roboto` font to this
+element, make sure you've imported `paper-styles/typography.html`.
 
 @group Paper Elements
 @element paper-radio-button
