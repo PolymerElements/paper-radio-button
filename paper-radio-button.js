@@ -185,7 +185,6 @@ In order to apply the `Roboto` font to this element, make sure you've imported `
 
 @group Paper Elements
 @element paper-radio-button
-@hero hero.svg
 @demo demo/index.html
 */
 Polymer({
