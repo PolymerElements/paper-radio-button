@@ -54,11 +54,11 @@ This element applies the mixin `--paper-font-common-base` but does not import
 `paper-styles/typography.html`. In order to apply the `Roboto` font to this
 element, make sure you've imported `paper-styles/typography.html`.
 
-@group Paper Elements
 @element paper-radio-button
 @demo demo/index.html
 */
 Polymer({
+  /** @override */
   _template: html`
     <style>
       :host {
@@ -212,10 +212,12 @@ Polymer({
     ariaActiveAttribute: {type: String, value: 'aria-checked'}
   },
 
+  /** @override */
   ready: function() {
     this._rippleContainer = this.$.radioContainer;
   },
 
+  /** @override */
   attached: function() {
     // Wait until styles have resolved to check for the default sentinel.
     // See polymer#4009 for more details.
@@ -243,6 +245,7 @@ Polymer({
     });
   },
 
+  /** @override */
   registered() {
     this._template.setAttribute('strip-whitespace', '');
   }
