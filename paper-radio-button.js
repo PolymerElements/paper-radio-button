@@ -141,7 +141,6 @@ Polymer({
 
       #radioLabel {
         line-height: normal;
-        position: relative;
         display: inline-block;
         vertical-align: middle;
         margin-left: var(--paper-radio-button-label-spacing, 10px);
