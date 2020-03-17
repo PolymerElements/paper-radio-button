@@ -20,6 +20,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script type="module">
     import '@polymer/iron-demo-helpers/demo-snippet.js';
     import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+    import '@polymer/iron-icon/iron-icon.js';
+    import '@polymer/iron-icons/iron-icons.js';
     import '../paper-radio-button.js';
 
     import {html} from '@polymer/polymer/lib/utils/html-tag.js';
@@ -82,6 +84,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <paper-radio-button class="red">Radio</paper-radio-button>
         <paper-radio-button checked class="green">Radio</paper-radio-button>
+      </template>
+    </demo-snippet>
+
+    <h3>Radio buttons can additionally be a series of icons</h3>
+    <demo-snippet class="centered-demo">
+      <template>
+        <paper-radio-button icon>
+          <span slot="icon">
+            <iron-icon icon="search"></iron-icon>
+          </span>
+        </paper-radio-button>
+        <paper-radio-button icon>
+          <span slot="icon">
+            <iron-icon icon="announcement"></iron-icon>
+          </span>
+          Feedback Mode
+        </paper-radio-button>
       </template>
     </demo-snippet>
   </div>
