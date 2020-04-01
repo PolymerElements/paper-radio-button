@@ -30,6 +30,11 @@ Example:
 
     <paper-radio-button></paper-radio-button>
     <paper-radio-button>Item label</paper-radio-button>
+    <paper-radio-button icon>
+      <span slot="icon">
+        <iron-icon icon="search"></iron-icon>
+      </span>
+    </paper-radio-button>
 
 ### Styling
 
@@ -183,7 +188,9 @@ Polymer({
     </style>
 
     <div id="radioContainer">
-      <div id="offRadio"></div>
+      <div id="offRadio">
+        <slot name="icon"></slot>
+      </div>
       <div id="onRadio"></div>
     </div>
 
