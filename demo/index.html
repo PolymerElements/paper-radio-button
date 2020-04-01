@@ -90,6 +90,41 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <h3>Radio buttons can additionally be a series of icons</h3>
     <demo-snippet class="centered-demo">
       <template>
+        <style>
+          /* When the element is in 'icon' mode rather than classic radio buttons,
+           * change styles
+           */
+          paper-radio-button[icon]::part(#radioContainer) {
+            width: 24px;
+            height: 24px;
+          }
+          paper-radio-button[icon]::part(#offRadio),
+          paper-radio-button[icon]::part(#onRadio) {
+            transition: color ease 0.28s;
+          }
+          paper-radio-button[icon]::part(#offRadio) {
+            border: none;
+            background-color: initial;
+            transition: initial;
+          }
+          paper-radio-button[icon]::part(#onRadio) {
+            background-color: initial;
+            -webkit-transform: initial;
+            transform: initial;
+            transition: initial;
+            will-change: initial;
+          }
+          paper-radio-button[icon][checked]::part(#offRadio) {
+            border-color: initial;
+            color: var(--paper-radio-button-checked-color, var(--primary-color));
+          }
+          paper-radio-button[icon][checked]::part(#onRadio) {
+            -webkit-transform: initial;
+            transform: initial;
+            background-color: initial;
+            color: var(--paper-radio-button-unchecked-color, var(--primary-text-color));
+          }
+        </style>
         <paper-radio-button icon>
           <span slot="icon">
             <iron-icon icon="search"></iron-icon>

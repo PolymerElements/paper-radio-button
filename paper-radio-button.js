@@ -185,51 +185,6 @@ Polymer({
         /* slightly darker than the button, so that it's readable */
         opacity: 0.65;
       }
-
-      /* When the element is in 'icon' mode rather than classic radio buttons,
-       * change styles
-       */
-      :host([icon]) #radioContainer {
-        width: 24px;
-        height: 24px;
-      }
-
-      :host([icon]) #offRadio, :host([icon]) #onRadio {
-        transition: color ease 0.28s;
-      }
-
-      :host([icon]) #offRadio {
-        border: none;
-        background-color: initial;
-        transition: initial;
-      }
-
-      :host([icon]) #onRadio {
-        background-color: initial;
-        -webkit-transform: initial;
-        transform: initial;
-        transition: initial;
-        will-change: initial;
-      }
-
-      :host([icon][checked]) #offRadio {
-        border-color: initial;
-        color: var(--paper-radio-button-checked-color, var(--primary-color));
-      }
-
-      :host([icon][checked]) #onRadio {
-        -webkit-transform: initial;
-        transform: initial;
-      }
-
-      :host([icon][checked]) #offRadio {
-        border-color: initial;
-      }
-
-      :host([icon][checked]) #onRadio {
-        background-color: initial;
-        color: var(--paper-radio-button-unchecked-color, var(--primary-text-color));
-      }
     </style>
 
     <div id="radioContainer">
